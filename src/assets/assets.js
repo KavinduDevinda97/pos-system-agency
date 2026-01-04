@@ -1,7 +1,7 @@
 import logo from './logo_new.svg'
 import arrow_icon from './arrow_icon.svg'
 import arrow_icon_dark from './arrow_icon_dark.svg'
-import group_profile from './group_profile.png'
+import group_profile from './group_profile_new.png'
 import bgImage1 from './bgImage1.png'
 import bgImage2 from './bgImage2.png'
 import hero_img from './hero_img.png'
@@ -31,7 +31,45 @@ import menu_icon_dark from './menu_icon_dark.svg'
 import sun_icon from './sun_icon.svg'
 import moon_icon from './moon_icon.svg'
 
+import {
+  Monitor,
+  Boxes,
+  Receipt,
+  BarChart3,
 
+} from "lucide-react";
+
+export const posServices = [
+  {
+
+    title: "POS Software Development",
+    description:
+      "Custom-built POS solutions tailored to your business workflow for fast billing.",
+    icon: Monitor,
+  },
+  {
+ 
+    title: "Inventory Management",
+    description:
+      "Track stock levels in real time with smart alerts to prevent shortages and losses.",
+    icon: Boxes,
+  },
+  {
+
+    title: "Billing & Invoicing",
+    description:
+      "Generate accurate bills with  discounts, and multiple payment methods.",
+    icon: Receipt,
+  },
+  {
+
+    title: "Reports & Analytics",
+    description:
+      "Visual sales reports to help you analyze performance and grow your business.",
+    icon: BarChart3,
+  },
+
+];
 export const company_logos = [
   microsoft_logo,
   zoom_logo,

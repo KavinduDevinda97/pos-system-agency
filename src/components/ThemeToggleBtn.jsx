@@ -3,6 +3,13 @@ import assets from "../assets/assets";
 
 const ThemeToggleBtn = ({ theme, setTheme }) => {
   useEffect(() => {
+    const prefersDarkMode =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setTheme(theme || (prefersDarkMode ? "dark" : "light"));
+  });
+
+  useEffect(() => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
     } else {
@@ -17,13 +24,13 @@ const ThemeToggleBtn = ({ theme, setTheme }) => {
           <img
             onClick={() => setTheme("light")}
             src={assets.sun_icon}
-            className="size-8.5 p-1.5 border border-gray-500 rounded-full"
+            className="size-8.5 p-1.5 border border-white rounded-full"
           />
         ) : (
           <img
             onClick={() => setTheme("dark")}
             src={assets.moon_icon}
-            className="size-8.5 p-1.5 border border-gray-500 rounded-full"
+            className="size-8.5 p-1.5 border border-black-500 rounded-full"
           />
         )}
       </button>
