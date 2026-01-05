@@ -15,9 +15,9 @@ import marketing_icon from './marketing_icon.svg'
 import social_icon from './social_icon.svg'
 import menu_icon from './menu_icon.svg'
 import close_icon from './close_icon.svg'
-import work_mobile_app from './work_mobile_app.png'
-import work_fitness_app from './work_fitness_app.png'
-import work_dashboard_management from './work_dashboard_management.png'
+import work_pos_system from './Retail-POS-System-Dashboard.png'
+import work_pharmacy_app from './Pharmacy-POS-System.png'
+import work_resturant_system from './Restaurant-POS Billing-Payment-Screen.png'
 import email_icon from './email_icon.svg'
 import person_icon from './person_icon.svg'
 import facebook_icon from './facebook_icon.svg'
@@ -93,9 +93,9 @@ const assets = {
   social_icon,
   menu_icon,
   close_icon,
-  work_mobile_app,
-  work_fitness_app,
-  work_dashboard_management,
+  work_pos_system,
+  work_pharmacy_app,
+  work_resturant_system,
   email_icon,
   person_icon,
   facebook_icon,
@@ -107,7 +107,30 @@ const assets = {
   sun_icon,
   moon_icon
 }
+export const posWorks = [
+  {
+    id: 1,
+    title: "Retail POS System Dashboard",
+    description:
+      "A modern retail POS dashboard with real-time sales tracking, inventory management, and performance analytics.",
+    image: work_pos_system,
+  },
 
+  {
+    id: 2,
+    title: "Restaurant POS Billing & Payment System",
+    description:
+      "Efficient restaurant POS system featuring order management, quick billing, and multiple payment options.",
+    image: work_resturant_system,
+  },
+    {
+    id: 3,
+    title: "Pharmacy POS System",
+    description:
+      "Comprehensive pharmacy POS solution with medicine inventory control, expiry tracking, and fast billing.",
+    image: work_pharmacy_app,
+  },    
+]
 export default assets
 
 export const teamData = [

@@ -1,17 +1,26 @@
 import React, { useState } from "react";
 import assets from "../assets/assets";
 import ThemeToggleBtn from "./ThemeToggleBtn";
+import { Phone } from "lucide-react";
+import { motion } from "motion/react";
 
 const Navbar = ({ theme, setTheme }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex justify-between items-center px-4 sm:px-12 lg:px-24 xl:px-40 py-4 sticky top-0 z-20 backdrop-blur-xl font-medium bg-white/50 dark:bg-gray-900/70">
-      <img
-        src={theme === "dark" ? assets.logo_dark : assets.logo}
-        className="w-25 sm:w-40 p-0"
-        alt="pos-logo"
-      />
+    <motion.div
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="flex justify-between items-center px-4 sm:px-12 lg:px-24 xl:px-40 py-4 sticky top-0 z-20 backdrop-blur-xl font-medium bg-white/50 dark:bg-gray-900/70"
+    >
+      <a href="#" onClick={() => setSidebarOpen(false)}>
+        <img
+          src={theme === "dark" ? assets.logo_dark : assets.logo}
+          className="w-25 sm:w-40 p-0 cursor-pointer"
+          alt="pos-logo"
+        />
+      </a>
 
       <div
         className={`text-black-700 dark:text-white sm:text-sm ${
@@ -30,31 +39,33 @@ const Navbar = ({ theme, setTheme }) => {
         <a
           onClick={() => setSidebarOpen(false)}
           href="#"
-          className="sm:hover:border-b"
+          className="sm:px-3 sm:py-1 rounded-full sm:hover:border sm:hover:border-current sm:hover:bg-black/5 dark:sm:hover:bg-white/10 transition"
         >
           Home
+        </a>
+                <a
+          onClick={() => setSidebarOpen(false)}
+          href="#about"
+          className="sm:px-3 sm:py-1 rounded-full sm:hover:border sm:hover:border-current sm:hover:bg-black/5 dark:sm:hover:bg-white/10 transition"
+        >
+          About Us
         </a>
         <a
           onClick={() => setSidebarOpen(false)}
           href="#services"
-          className="sm:hover:border-b"
+          className="sm:px-3 sm:py-1 rounded-full sm:hover:border sm:hover:border-current sm:hover:bg-black/5 dark:sm:hover:bg-white/10 transition"
         >
           Services
         </a>
+  
         <a
           onClick={() => setSidebarOpen(false)}
           href="#our-work"
-          className="sm:hover:border-b"
+          className="sm:px-3 sm:py-1 rounded-full sm:hover:border sm:hover:border-current sm:hover:bg-black/5 dark:sm:hover:bg-white/10 transition"
         >
           Our Work
         </a>
-        <a
-          onClick={() => setSidebarOpen(false)}
-          href="#contact-us"
-          className="sm:hover:border-b"
-        >
-          Contact Us
-        </a>
+
       </div>
 
       <div className="flex items-center gap-2 sm:gap-4">
@@ -71,22 +82,10 @@ const Navbar = ({ theme, setTheme }) => {
           className="text-sm max-sm:hidden flex items-center gap-2 bg-primary dark:bg-white text-white dark:text-black px-6 py-2 rounded-full cursor-pointer hover:scale-103 transition-all"
         >
           Contact Us {/* Light mode arrow */}
-          <img
-            src={assets.arrow_icon}
-            width={16}
-            alt="arrow-light-mode"
-            className="block dark:hidden"
-          />
-          {/* Dark mode arrow */}
-          <img
-            src={assets.arrow_icon_dark}
-            width={16}
-            alt="arrow-dark-mode"
-            className="hidden dark:block"
-          />
+          <Phone size={18} />
         </a>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

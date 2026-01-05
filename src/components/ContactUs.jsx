@@ -1,0 +1,106 @@
+import React from "react";
+import Title from "./Title";
+import { Mail, Send, User } from "lucide-react";
+import toast from "react-hot-toast";
+import { motion } from "motion/react";
+
+const ContactUs = () => {
+  const onSubmit = async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "860389c7-cf95-43f4-a630-4cbbc88898a2");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        toast.success("Message sent successfully!");
+        event.target.reset();
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      transition={{ staggerChildren: 0.2 }}
+      id="contact-us"
+      className="flex flex-col items-center gap-7 px-4 sm:px-12 lg:px-24 xl:px-40 pt-30 text-gray-700 dark:text-white"
+    >
+      <Title
+        title="Need a Custom POS Solution?"
+        desc="Reach out today for a free consultation and let’s design a POS system that streamlines your operations and boosts growth."
+      />
+
+      <motion.form
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay:  0.4 }}
+        viewport={{ once: true }}
+        onSubmit={onSubmit}
+        className="grid sm:grid-cols-2 gap-3 sm:gap-5 max-w-2xl w-full mb-3"
+      >
+        <div>
+          <p className="mb-2 text-sm font-medium ">Name</p>
+          <div className="flex items-center pl-3 rounded-lg border border-gray-300 dark:border-gray-600">
+            <User size={18} className="text-gray-400" />
+            <input
+              type="text"
+              name="name"
+              placeholder="Enter Your name"
+              className="w-full  p-3 text-sm outline-none"
+              required
+            />
+          </div>
+        </div>
+        <div>
+          <p className="mb-2 text-sm font-medium ">Email</p>
+          <div className="flex items-center pl-3 rounded-lg border border-gray-300 dark:border-gray-600">
+            <Mail size={18} className="text-gray-400" />
+            <input
+              type="text"
+              name="email"
+              placeholder="Enter Your email"
+              className="w-full  p-3 text-sm outline-none"
+              required
+            />
+          </div>
+        </div>
+
+        <div className="sm:col-span-2">
+          <p className="mb-2 text-sm font-medium ">Message</p>
+
+          <textarea
+            rows={8}
+            name="message"
+            placeholder="Enter Your message"
+            className="w-full p-3 text-sm outline-none rounded-lg border border-gray-300 dark:border-gray-600"
+            required
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="w-max flex items-center gap-2 rounded-full bg-primary dark:bg-white dark:text-black text-white text-sm px-6 py-2  cursor-pointer hover:scale-103 transition-all"
+        >
+          Submit
+          <Send size={18} />
+        </button>
+      </motion.form>
+    </motion.div>
+  );
+};
+
+export default ContactUs;
